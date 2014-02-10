@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-nr-min.css">
+<style>
+    .l-box {
+        padding: 1em;
+
+    }
+body,
+.pure-g [class *= "pure-u"],
+.pure-g-r [class *= "pure-u"] {
+
+    font-family: Georgia, Times, "Times New Roman", serif;
+}
+.button-xlarge {
+            font-size: 125%;
+}
+</style>
+<body>
+    <div class="pure-g">
+        <div class="pure-u-1-2" style="padding:25px;">
+<div style="height:100px;"></div>
+<form class="pure-form" method="post">{% csrf_token %}
+    <fieldset>
+        <legend style='font-family: "Arial Narrow", Arial, sans-serif;color:#424242;'>GOOGLE ANALYTICS ?</legend>
+        <input type="text" class="pure-input-1" name="url" placeholder="Enter URL">
+     </fieldset>
+	<button type="submit" class="button-xlarge pure-button">Check</button>
+</form>
+<div style='color:#04B486;font-size:20px;font-family: "Arial Narrow", Arial, sans-serif;'><span style="font-size:14px;"><br/>{{ url }} </span>uses Google Analytics<br/></br></div>
+<div style='color:#424242;font-family: "Arial Narrow", Arial, sans-serif;font-size:13px;'>
+<div style="font-size:16px;color:#1C1C1C;">{{ pages }} pages scanned. The following pages use Google Analytics:</div></br>
+{% for links in level1.has_code %}
+ <span style="color:#2E64FE;">{{ links.1 }}</span>&nbsp &nbsp{{ links.0 }}</br>
+{% endfor %}</div>
+        <div class="pure-u-1-2"></div>
+    </div>
+</body>
+</html>
